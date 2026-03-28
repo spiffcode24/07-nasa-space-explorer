@@ -1,21 +1,41 @@
 /* Global reset & box sizing */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+
+:root {
+  --nasa-blue: #0B3D91;
+  --nasa-red: #FC3D21;
+  --nasa-white: #FFFFFF;
+  --nasa-ink: #1B1F2A;
 }
 
 /* Base page styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
-  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(252, 61, 33, 0.14) 0%, rgba(252, 61, 33, 0) 34%),
+    radial-gradient(circle at 88% 10%, rgba(11, 61, 145, 0.22) 0%, rgba(11, 61, 145, 0) 40%),
+    linear-gradient(145deg, #f9fbff 0%, var(--nasa-white) 52%, #eef3fb 100%);
+  color: var(--nasa-ink);
 }
 
 /* Centered container */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+}
+
+/* NASA-branded form controls */
+.form-control {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.form-control:focus {
+  border-color: #0B3D91;
+  box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.1);
 }
 
 /* Header */
@@ -23,122 +43,260 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
+  gap: 20px;
+  border-bottom: 3px solid #0B3D91;
   padding-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 h1 {
-  font-family: Verdana, sans-serif;
-  font-weight: bold;
-  color: #212121;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  color: #0B3D91;
+  margin-bottom: 0;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
 }
 
 /* Logo */
 .logo {
   width: 140px;
-  margin-right: 15px;
 }
 
-/* Date‐picker & button row */
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
-}
-
-/* Inputs and buttons */
-input[type="date"],
-button {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 100%;
-}
-
-/* Button specific */
-button {
-  background-color: #d3d3d3;
-  color: black;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #bfbfbf;
-}
-
-/* Stack horizontally on wider screens */
-@media (min-width: 600px) {
-  .filters {
-    flex-direction: row;
-    padding: 0;
-  }
-  
-  input[type="date"],
-  button {
-    width: auto;
-  }
-}
-
-/* Gallery flex container */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
-}
-
-/* Gallery items */
-.gallery-item {
-  flex: 1 1 100%;  /* full width by default */
-  min-width: 280px;
-  max-width: 500px;
-  background: white;
-  padding: 10px;
+/* Did You Know fact panel */
+.did-you-know {
+  background: #ffffff;
+  border-left: 6px solid #FC3D21;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  padding: 14px 16px;
+  box-shadow: 0 2px 10px rgba(11, 61, 145, 0.1);
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
+.did-you-know-title {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0B3D91;
+}
+
+.did-you-know p {
+  color: #1B1F2A;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* NASA-branded button */
+.btn-dark {
+  background-color: #0B3D91 !important;
+  border-color: #0B3D91 !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.btn-dark:hover {
+  background-color: #082657 !important;
+  border-color: #082657 !important;
+  box-shadow: 0 4px 12px rgba(11, 61, 145, 0.3);
+}
+
+.btn-dark:active {
+  background-color: #061d3d !important;
+  border-color: #061d3d !important;
+}
+
+/* Keep filter labels easy to read */
+.form-label {
+  font-weight: 600;
+  color: #0B3D91;
+  font-size: 0.95rem;
+}
+
+/* Gallery row spacing comes from Bootstrap's row and g-4 classes */
+.gallery {
+  min-height: 220px;
+}
+
+.gallery-item {
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(11, 61, 145, 0.12);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(11, 61, 145, 0.18);
 }
 
 .gallery-item img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 4px;
+  cursor: pointer;
 }
 
-.gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
+.gallery-item .card-text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Show only a short description preview in cards */
+.gallery-item .card-text-preview {
+  position: relative;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 4.2em;
+  max-height: 4.5em;
+}
+
+.gallery-item .card-text-preview::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.6em;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(248, 249, 250, 0), rgba(248, 249, 250, 1));
+}
+
+/* Card body styling for NASA branding */
+.gallery-item .card-body {
+  background: #f8f9fa;
+  border-top: 3px solid #0B3D91;
+}
+
+.placeholder {
+  display: flex;
+  justify-content: center;
 }
 
 /* Placeholder content */
-.placeholder {
-  flex: 1 1 100%;
+.placeholder-panel {
+  width: min(100%, 760px);
   text-align: center;
-  padding: 40px;
-  color: #666;
+  padding: 50px 30px;
+  color: #555555;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 2px solid #0B3D91;
+  box-shadow: 0 4px 12px rgba(11, 61, 145, 0.1);
 }
 
 .placeholder-icon {
   font-size: 48px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+
+/* Lightweight custom modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.74);
+  padding: 18px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease, visibility 240ms ease;
+}
+
+.lightbox-modal.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox-dialog {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(11, 61, 145, 0.15);
+  border-top: 4px solid #0B3D91;
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+  transition: transform 240ms ease, opacity 240ms ease;
+}
+
+.lightbox-modal.is-visible .lightbox-dialog {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.lightbox-close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: block;
+  border: 0;
+  background: #0B3D91;
+  color: #ffffff;
+  width: 42px;
+  height: 42px;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  border-bottom-left-radius: 8px;
+  transition: background 200ms ease;
+}
+
+.lightbox-close:hover {
+  background: #082657;
+}
+
+.lightbox-image {
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  display: block;
+  background: #f8fafc;
+}
+
+.lightbox-content {
+  padding: 18px;
+}
+
+/* Modal title styling */
+.lightbox-content h2 {
+  color: #0B3D91;
+  font-weight: 700;
+  border-bottom: 2px solid #0B3D91;
+  padding-bottom: 12px;
+  margin-bottom: 12px !important;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-modal,
+  .lightbox-dialog {
+    transition: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .site-header {
+    flex-direction: column;
+    border-bottom-width: 2px;
+    padding-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }
